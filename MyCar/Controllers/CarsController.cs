@@ -24,7 +24,7 @@ namespace MyCar.Controllers
             return Ok(new
             {
                 success = true,
-                data = await _appDbcontext.Cars.ToListAsync()
+                data = await _appDbcontext.Cars.ToListAsync()   
             });
         }
 
@@ -45,7 +45,7 @@ namespace MyCar.Controllers
 
         public async Task<IActionResult> CreateCar(Car car) {
             _appDbcontext.Cars.Add(car);
-            _appDbcontext.SaveChangesAsync();
+            await _appDbcontext.SaveChangesAsync();
 
             return Ok(new
             {
@@ -64,7 +64,7 @@ namespace MyCar.Controllers
             }
 
             _appDbcontext.Cars.Remove(car);
-            _appDbcontext.SaveChangesAsync();
+            await _appDbcontext.SaveChangesAsync();
 
             return Ok(new
             {
